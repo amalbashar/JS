@@ -1,64 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country Flags</title>
     <style>
-      #flag-container {
-        width: 400px;
-        height: 300px;
-        border: 1px solid #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      img {
-        max-width: 100%;
-        max-height: 100%;
-      }
+        #flag-container {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <select id="country-select">
-      <option value="">--SELECT--</option>
-      <option value="Jordan">Jordan</option>
-      <option value="Palestine">Palestine</option>
-      <option value="Syria">Syria</option>
+        <option value="">--SELECT--</option>
+        <option value="Jordan">Jordan</option>
+        <option value="Palestine">Palestine</option>
+        <option value="Syria">Syria</option>
     </select>
 
     <div id="flag-container"></div>
 
     <script>
-      const flagContainer = document.getElementById("flag-container");
-      const countrySelect = document.getElementById("country-select");
+        const flagContainer = document.getElementById("flag-container");
+        const countrySelect = document.getElementById("country-select");
 
-      countrySelect.addEventListener("change", function () {
-        flagContainer.innerHTML = "";
+        countrySelect.addEventListener("change", function () {
+            flagContainer.innerHTML = "";
 
-        const selectedCountry = countrySelect.value;
+            const selectedCountry = countrySelect.value;
 
-        if (selectedCountry) {
-          const img = document.createElement("img");
+            if (selectedCountry) {
+                const img = document.createElement("img");
+                img.src = getFlagURL(selectedCountry);
+                flagContainer.appendChild(img);
+            }
+        });
 
-          img.src = getFlagURL(selectedCountry);
-
-          flagContainer.appendChild(img);
+        function getFlagURL(country) {
+            switch (country) {
+                case "Jordan":
+                    return "https://upload.wikimedia.org/wikipedia/commons/c/c0/Flag_of_Jordan.svg";
+                case "Palestine":
+                    return "https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg";
+                case "Syria":
+                    return "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAACgCAMAAAAFBRFXAAAAdVBMVEUAAADOESb///8Aej3LAADwysvLy8sAdjVMlmoAdDEAeDr1+fcAcSsAcCgAbiMAahcmfEEAZQCyz716qorn7+ra59/L3tKPsZauybZgmnI4h1REkWMshVC70cGlxrNZl25BhVBQjmCbu6ODspV0on+TvKNspIDAFCh6AAADq0lEQVR4nO2a63aiMACEXbO7aRIgyK1VERUv7/+IC2jZitoLmbPdE+f72VOn+cgQEuzkx4Mx+e4B/Gso7DsU9h0K+w6FfYfCvkNh36Gw71DYdyjsOxT2HQr7DoV9h8K+Q2HfobDvUNh3KOw7FPYdCvsOhX2Hwr5DYd+hsO9Q2Hco7DuTnw/G5NeDMZk+GBT2HQr7DoUdKTJsXlZg8+DCzy/YvJdnbB5a2OznBpo330Pz4MLFwkI7ndkFuNNg4ZfAQjv9YgPwPYIVNmmglsjApQpSbKexwnkphQUO0FghyxyXN0ULryIhbILLS6wQ0QqXNwULN40WQgI7/aSEAHcaKpwpLZoRwgZomusntIKu+1DhVdNAIVSFyqtUm2ehnYYKH7sByjUqby27C3hE5bUghU2oO+ENqIPZphPWIfImRgqfGi10DOp0FXcXENtppPC8a3TTwRSTl77mzTF5HS7C1eLpgtN8tFN8+fNF9alOmmFe3AcO8xwG7TTDSRTIN4ietz8N5ad3Iknzyx/mBW47G7dKm4XU4l20mn9ha5jNP8yTC7cl0fUe3sXqvfGpePe1vAM47wrnRWu1De5Oig63X65fsg3v5wVb5wXbfZXO03sjlCodcdLJUyVv5+lwTN4AwGPJJNHNGqr4c6vzVV51u9YySgA7EMhzOCvt9fjC8QfZvAyv82wJ2cBhNh4mjYa1tk67j3R4BXUEOiWidlqJuDQOHV8DJJdzrAXqtQJKuIgvhV1fXmaXU6xj1MtLlHAdDe5gx+flbnAXRzVkmDDhbD1YWLV0CxzuuNQadOYECRdXD5KZ0yMznw3zFKjTIOG+0f3MuHW6b7R+3YSgOg16LC1P49LBslT6vMy4BJ6XQK3K5Xnnqpb/02MpOzVQyp2ZpvpUb+nQwUKe65JOze48yTPMTYwRPjU6WHQPy2oTdKN16PSucww23Uk/WQbATmOEy2aA2u7Pc5rv2+2/3I7uoNm2n1fHPq/dx8kSMVLQXrpptBJ1L2jqZvuvy9GdLkrdHD3qvsOmbm8TTKchwodIRBcnVVMsQiFHf3n/LEVQFm8Lsto2f+IwfoR/gQiXMjoOLr85ztTYL+/NXs2Og89mx0hBOo0Qzu2tb1cqO7bTRWlv5SmL+OIUIbzb3BxJXtbj8urbJ+l84/o+qwUhfLhT3WzcGwqT3FmdDOIm5j+m+Q6FfYfCvjP5/WBMCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCyPfzBxT9xVdc65+lAAAAAElFTkSuQmCC";
+                default:
+                    return "";
+            }
         }
-      });
-
-      function getFlagURL(country) {
-        switch (country) {
-          case "jordan":
-return" https://www.google.com/imgres?q=%D8%B9%D9%84%D9%85%20%D8%A7%D9%84%D8%A7%D8%B1%D8%AF%D9%86&imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fc%2Fc0%2FFlag_of_Jordan.svg%2F1200px-Flag_of_Jordan.svg.png&imgrefurl=https%3A%2F%2Far.wikipedia.org%2Fwiki%2F%25D8%25B9%25D9%2584%25D9%2585_%25D8%25A7%25D9%2584%25D8%25A3%25D8%25B1%25D8%25AF%25D9%2586&docid=v-7YAlMjjMG5DM&tbnid=pJFEgE-_Pr6QEM&vet=12ahUKEwj4zeCm6cyGAxXN9rsIHTIzLn0QM3oECBMQAA..i&w=1200&h=600&hcb=2&ved=2ahUKEwj4zeCm6cyGAxXN9rsIHTIzLn0QM3oECBMQAA"
-          case "Palestine":
-            return "https://www.google.com/imgres?q=%D8%B9%D9%84%D9%85%20%D9%81%D9%84%D8%B3%D8%B7%D9%8A%D9%86&imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F00%2FFlag_of_Palestine.svg%2F280px-Flag_of_Palestine.svg.png&imgrefurl=https%3A%2F%2Far.wikipedia.org%2Fwiki%2F%25D8%25B9%25D9%2584%25D9%2585_%25D9%2581%25D9%2584%25D8%25B3%25D8%25B7%25D9%258A%25D9%2586&docid=KXWOZyrQxENIgM&tbnid=mx7YOF8Sa-J21M&vet=12ahUKEwiE4YbB6cyGAxWl_7sIHcteB68QM3oECBMQAA..i&w=280&h=140&hcb=2&ved=2ahUKEwiE4YbB6cyGAxWl_7sIHcteB68QM3oECBMQAA";
-          case "Syria":
-            return "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAACgCAMAAAAFBRFXAAAAdVBMVEUAAADOESb///8Aej3LAADwysvLy8sAdjVMlmoAdDEAeDr1+fcAcSsAcCgAbiMAahcmfEEAZQCyz716qorn7+ra59/L3tKPsZauybZgmnI4h1REkWMshVC70cGlxrNZl25BhVBQjmCbu6ODspV0on+TvKNspIDAFCh6AAADq0lEQVR4nO2a63aiMACEXbO7aRIgyK1VERUv7/+IC2jZitoLmbPdE+f72VOn+cgQEuzkx4Mx+e4B/Gso7DsU9h0K+w6FfYfCvkNh36Gw71DYdyjsOxT2HQr7DoV9h8K+Q2HfobDvUNh3KOw7FPYdCvsOhX2Hwr5DYd+hsO9Q2Hco7DuTnw/G5NeDMZk+GBT2HQr7DoUdKTJsXlZg8+DCzy/YvJdnbB5a2OznBpo330Pz4MLFwkI7ndkFuNNg4ZfAQjv9YgPwPYIVNmmglsjApQpSbKexwnkphQUO0FghyxyXN0ULryIhbILLS6wQ0QqXNwULN40WQgI7/aSEAHcaKpwpLZoRwgZomusntIKu+1DhVdNAIVSFyqtUm2ehnYYKH7sByjUqby27C3hE5bUghU2oO+ENqIPZphPWIfImRgqfGi10DOp0FXcXENtppPC8a3TTwRSTl77mzTF5HS7C1eLpgtN8tFN8+fNF9alOmmFe3AcO8xwG7TTDSRTIN4ietz8N5ad3Iknzyx/mBW47G7dKm4XU4l20mn9ha5jNP8yTC7cl0fUe3sXqvfGpePe1vAM47wrnRWu1De5Oig63X65fsg3v5wVb5wXbfZXO03sjlCodcdLJUyVv5+lwTN4AwGPJJNHNGqr4c6vzVV51u9YySgA7EMhzOCvt9fjC8QfZvAyv82wJ2cBhNh4mjYa1tk67j3R4BXUEOiWidlqJuDQOHV8DJJdzrAXqtQJKuIgvhV1fXmaXU6xj1MtLlHAdDe5gx+flbnAXRzVkmDDhbD1YWLV0CxzuuNQadOYECRdXD5KZ0yMznw3zFKjTIOG+0f3MuHW6b7R+3YSgOg16LC1P49LBslT6vMy4BJ6XQK3K5Xnnqpb/02MpOzVQyp2ZpvpUb+nQwUKe65JOze48yTPMTYwRPjU6WHQPy2oTdKN16PSucww23Uk/WQbATmOEy2aA2u7Pc5rv2+2/3I7uoNm2n1fHPq/dx8kSMVLQXrpptBJ1L2jqZvuvy9GdLkrdHD3qvsOmbm8TTKchwodIRBcnVVMsQiFHf3n/LEVQFm8Lsto2f+IwfoR/gQiXMjoOLr85ztTYL+/NXs2Og89mx0hBOo0Qzu2tb1cqO7bTRWlv5SmL+OIUIbzb3BxJXtbj8urbJ+l84/o+qwUhfLhT3WzcGwqT3FmdDOIm5j+m+Q6FfYfCvjP5/WBMCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCyPfzBxT9xVdc65+lAAAAAElFTkSuQmCC";
-          default:
-            return "";
-        }
-      }
     </script>
-  </body>
+</body>
 </html>
