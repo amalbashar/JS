@@ -1,0 +1,148 @@
+<!-- <html>
+
+<head>
+    <title>Boosted</title>
+    <script src="boosted.js" defer></script>
+    <link rel="stylesheet" href="boosted.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.3.3/dist/css/orange-helvetica.min.css" rel="stylesheet"
+        integrity="sha384-A0Qk1uKfS1i83/YuU13i2nx5pk79PkIfNFOVzTcjCMPGKIDj9Lqx9lJmV7cdBVQZ" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.3.3/dist/css/boosted.min.css" rel="stylesheet"
+        integrity="sha384-laZ3JUZ5Ln2YqhfBvadDpNyBo7w5qmWaRnnXuRwNhJeTEFuSdGbzl4ZGHAEnTozR" crossorigin="anonymous" />
+
+    <style>
+        .button2:hover {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="w-100">
+    <div class="d-flex flex-row">
+        <div class="d-flex flex-column">
+            <header>
+                <nav class="navbar" style="margin-left: 18rem">
+                    <div class="container-fluid">
+                        <div class="navbar-brand ms-5">
+                            <a class="stretched-link" href="#">
+                                <img style="width: 9rem; height: 6rem"
+                                    src="https://boosted.orange.com/docs/5.3/assets/brand/orange-logo.svg--"
+                                    width="auto" height="4rem" alt="Boosted - Back to Home" loading="lazy" />
+                            </a>
+                            <div class="d-flex flex-column ms-3 mb-0 me-5">
+                                <p class="fs-2">اكاديمية البرمجة</p>
+                                <p class="fs-2">Coding Academy</p>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row ms-5 mb-0">
+                            <p class="fs-6 ms-5">Help</p>
+                            <p class="fs-6 ms-4">Terms & Conditions</p>
+                        </div>
+                    </div>
+                </nav>
+                <span class="border-end"></span>
+            </header>
+            <form style="margin-left: 20rem;" onsubmit="login(event)">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div id="passHelp" class="form-text"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2" onclick="submitt()">Submit</button>
+            </form>
+
+</body>
+<script>
+    function login(event) {
+        event.preventDefault();
+        var localemail = localStorage.getItem("email");
+        var localpassword = localStorage.getItem("pass");
+        var inputemail = document.getElementById("exampleInputEmail1").value;
+        var inputpass = document.getElementById("exampleInputPassword1").value;
+        var username = localStorage.getItem("name");
+        if (localemail == inputemail && localpassword == inputpass) {
+            document.getElementById("warninglog").innerText = "Done";
+            sessionStorage.setItem("name", username);
+            window.location = "./welcome.html";
+        } else
+            document.getElementById("warninglog").innerText =
+                "wrong email or password";
+    }
+</script>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/"
+      rel="preconnect"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/boosted@5.3.3/dist/css/boosted.min.css"
+      rel="stylesheet"
+      integrity="sha384-laZ3JUZ5Ln2YqhfBvadDpNyBo7w5qmWaRnnXuRwNhJeTEFuSdGbzl4ZGHAEnTozR"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/boosted@5.3.3/dist/js/boosted.bundle.min.js"
+      integrity="sha384-3RoJImQ+Yz4jAyP6xW29kJhqJOE3rdjuu9wkNycjCuDnGAtC/crm79mLcwj1w2o/"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <form onsubmit="login(event)">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+        <div id="emailHelp" class="form-text">
+          We'll never share your email with anyone else.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">Submit</button>
+      <div id="warninglog"></div>
+    </form>
+  </body>
+  <script>
+    function login(event) {
+      event.preventDefault();
+      var localemail = localStorage.getItem("email");
+      var localpassword = localStorage.getItem("password");
+      var inputemail = document.getElementById("email").value;
+      var inputpass = document.getElementById("password").value;
+      var username = localStorage.getItem("fname");
+      if (localemail == inputemail && localpassword == inputpass) {
+        document.getElementById("warninglog").innerText = "Done";
+        sessionStorage.setItem("name", username);
+        window.location = "./welcome.html";
+      } else
+        document.getElementById("warninglog").innerText =
+          "wrong email or password";
+    }
+  </script>
+</html>
