@@ -1,0 +1,122 @@
+<!-- <<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head> 
+
+    
+
+<body>
+
+    <div class="cont" style=" border-radius: 7px;">
+        <div class="screen" style="box-shadow: 1px 4px 1px; color: gray;" type="text" id="display" disabled ></div>
+        <div class="one"style="box-shadow: 1px 4px 1px; color: gray;"      onclick="appendCharacter('1')"  >1</div>
+        <div class="tow"style="box-shadow: 1px 4px 1px; color: gray;"      onclick="appendCharacter('2')"  >2</div>
+        <div class="three"style="box-shadow: 1px 4px 1px; color: gray;"    onclick="appendCharacter('3')"  >3</div>
+        <div class="plus"style="box-shadow: 1px 4px 1px; color: gray;"     onclick="appendCharacter('+')"  >+</div>
+        <div class="four"style="box-shadow: 1px 4px 1px; color: gray;"     onclick="appendCharacter('4')"  >4</div>
+        <div class="f"style="box-shadow: 1px 4px 1px; color: gray;"        onclick="appendCharacter('5')"  >5</div>
+        <div class="six"style="box-shadow: 1px 4px 1px; color: gray;"      onclick="appendCharacter('6')"  >6</div>
+        <div class="m"style="box-shadow: 1px 4px 1px; color: gray;"        onclick="appendCharacter('-')"  >-</div>
+        <div class="s"style="box-shadow: 1px 4px 1px; color: gray;"        onclick="appendCharacter('7')"  >7</div>
+        <div class="e" style="box-shadow: 1px 4px 1px; color: gray;"     onclick="appendCharacter('8')" >8</div>
+        <div class="n"style="box-shadow: 1px 4px 1px; color: gray;"        onclick="appendCharacter('9')"  >9</div>
+        <div class="star" style="box-shadow: 1px 4px 1px; color: gray;"  onclick="appendCharacter('*')" >*</div>
+        <div class="c"style="box-shadow: 1px 4px 1px; color: gray;"        onclick="clearDisplay()"  >c</div>
+        <div class="zero"style="box-shadow: 1px 4px 1px; color: gray;"     onclick="appendCharacter('0')"  >0</div>
+        <div class="eq" style="box-shadow: 1px 4px 1px; color: gray;"    onclick="appendCharacter('=')" >=</div>
+        <div class="slash"style="box-shadow: 1px 4px 1px; color: gray;"    onclick="appendCharacter('/')"  >/</div>
+
+
+    </div>
+<script > // script.js
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+    
+    function deleteLast() {
+        let display = document.getElementById('display');
+        display.value = display.value.slice(0, -1);
+    }
+    
+    function appendCharacter(character) {
+        let display = document.getElementById('display');
+        display.value += character;
+    }
+    
+    function calculateResult() {
+        let display = document.getElementById('display');
+        try {
+            display.value = eval(display.value);
+        } catch (e) {
+            display.value = 'خطأ';
+        }
+    }
+    </script>
+
+</body>
+
+</html>" -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="cont" style="border-radius: 7px;">
+        <input class="screen" style="box-shadow: 1px 4px 1px; color: gray;" type="text" id="display" disabled />
+        <div class="one" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('1')">1</div>
+        <div class="tow" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('2')">2</div>
+        <div class="three" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('3')">3</div>
+        <div class="plus" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('+')">+</div>
+        <div class="four" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('4')">4</div>
+        <div class="f" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('5')">5</div>
+        <div class="six" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('6')">6</div>
+        <div class="m" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('-')">-</div>
+        <div class="s" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('7')">7</div>
+        <div class="e" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('8')">8</div>
+        <div class="n" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('9')">9</div>
+        <div class="star" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('*')">*</div>
+        <div class="c" style="box-shadow: 1px 4px 1px; color: gray;" onclick="clearDisplay()">c</div>
+        <div class="zero" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('0')">0</div>
+        <div class="eq" style="box-shadow: 1px 4px 1px; color: gray;" onclick="calculateResult()">=</div>
+        <div class="slash" style="box-shadow: 1px 4px 1px; color: gray;" onclick="appendCharacter('/')">/</div>
+    </div>
+
+    <script>
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function deleteLast() {
+            let display = document.getElementById('display');
+            display.value = display.value.slice(0, -1);
+        }
+
+        function appendCharacter(character) {
+            let display = document.getElementById('display');
+            display.value += character;
+        }
+
+        function calculateResult() {
+            let display = document.getElementById('display');
+            try {
+                display.value = eval(display.value);
+            } catch (e) {
+                display.value = '';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

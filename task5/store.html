@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            width: 300px;
+            height: 300px;
+
+        }
+
+        .product img {
+            height: 100px;
+            width: 100px;
+
+        }
+
+        .item {
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+
+
+        }
+
+        .products {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .item div {
+            display: flex;
+            flex-direction: row;
+            gap: 100px;
+            justify-content: center;
+            display: none;
+
+        }
+
+        .item img {
+            height: 100px;
+            width: 100px;
+        }
+
+        .item input {
+            height: 50px;
+            width: 30px;
+            align-self: center;
+        }
+
+        .item p {
+            height: 100px;
+            width: 100px;
+            border: solid;
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="products">
+        <div class="product">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQS3b-hA_-XjZJpLtXh2U_4JcYV6B1ZzJCAmn2gRAU1Q-W3APgL9jXv_CTWTPrRSmLjOl1eTdzf1mHDXMYm1BpZbdWc1aT518EHWXUjsSQEkJYT-iVYcigE1Y0k_kbPgAp1UlgrNZPEzg&usqp=CAc">
+
+            <p> iphone <br> 900jd</p>
+            <button class="add-to-cart" data-item="iphone" data-price="900" onclick="addToCart('iphone', 900)">Add to
+                Cart</button>
+
+        </div>
+        <div class="product">
+            <img
+                src="data:image/jpeg;base64,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">
+            <p> head phone <br> 150jd </p>
+            <button class="add-to-cart" data-item="headphones" data-price="150"
+                onclick="addToCart('headphones', 150)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img
+                src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSihx7igHZ_c9lz-ZshtQDxC6vC8iWcq4Io_KS6TfLzoZKw2ad1kbfIhOb0nF7teOovbibVf8LCfjgMBogGkhjyunXQYuBajrvooJ-bp7wOXYtCWnzauKiWTCBm6JfTQxucL9M6I00VTQU&usqp=CAc">
+            <p> keyboard <br> 60jd</p>
+            <button class="add-to-cart" data-item="keyboard" data-price="60" onclick="addToCart('keyboard', 60)">Add to
+                Cart</button>
+
+        </div>
+    </div>
+    <div class="item">
+        <div id="carta" data-item="iphone">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQS3b-hA_-XjZJpLtXh2U_4JcYV6B1ZzJCAmn2gRAU1Q-W3APgL9jXv_CTWTPrRSmLjOl1eTdzf1mHDXMYm1BpZbdWc1aT518EHWXUjsSQEkJYT-iVYcigE1Y0k_kbPgAp1UlgrNZPEzg&usqp=CAc">
+            <button onclick="changeQuantity('iphone', -1)">-</button>
+
+            <input type="number" id="iphone-quantity" value="0" min="0" readonly>
+            <button onclick="changeQuantity('iphone', 1)">+</button>
+            <button class="delete" onclick="removeItem('iphone')">Delete</button>
+
+        </div> <br>
+        <div id="cartb" data-item="headphones">
+            <img
+                src="data:image/jpeg;base64,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">
+            <button onclick="changeQuantity('headphones', -1)">-</button>
+            <input type="number" id="headphones-quantity" value="0" min="0" readonly>
+            <button onclick="changeQuantity('headphones', 1)">+</button>
+            <button class="delete" onclick="removeItem('headphones')">Delete</button>
+
+        </div> <br>
+        <div id="cartc" data-item="keyboard">
+            <img
+                src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSihx7igHZ_c9lz-ZshtQDxC6vC8iWcq4Io_KS6TfLzoZKw2ad1kbfIhOb0nF7teOovbibVf8LCfjgMBogGkhjyunXQYuBajrvooJ-bp7wOXYtCWnzauKiWTCBm6JfTQxucL9M6I00VTQU&usqp=CAc">
+            <button onclick="changeQuantity('keyboard', -1)">-</button>
+            <input type="number" id="keyboard-quantity" value="0" min="0" readonly>
+            <button onclick="changeQuantity('keyboard', 1)">+</button>
+            <button class="delete" onclick="removeItem('keyboard')">Delete</button>
+
+        </div>
+    </div>
+<br> <br>
+
+
+    <div class="total-section">
+        <p style="margin-right: 750px;">total: <span id="total">0</span> dj</p>
+
+    </div>
+
+    <script>
+        let cart = {};
+        let addedItems = []
+        let currentItem = '';
+
+        //    document.getElementById('product1').addEventListener('click', function() {
+        //         document.getElementById('carta').style.display = 'flex';
+        //         updateTotal();
+        //     });
+
+        //     document.getElementById('product2').addEventListener('click', function() {
+        //         document.getElementById('cartb').style.display = 'flex';
+        //         updateTotal();
+        //     });
+
+        //     document.getElementById('product3').addEventListener('click', function() {
+        //         document.getElementById('cartc').style.display = 'flex';
+        //         updateTotal();
+        //     });
+
+        //     function updateTotal() {
+        //         let total = 0;
+        //         const products = document.querySelectorAll('.cart div');
+        //         products.forEach(function(product) {
+        //             if (product.style.display === 'flex') {
+        //                 const price = parseFloat(product.querySelector('p').textContent);
+        //                 const quantity = parseFloat(product.querySelector('input').value) || 1;
+        //                 total += price * quantity;
+        //             }
+        //         });
+        //         document.querySelector('h3').textContent = total + ' jd';
+        //     }
+
+        //     document.querySelectorAll('.cart input').forEach(function(input) {
+        //         input.addEventListener('input', updateTotal);
+        //     });
+
+        //     document.querySelectorAll('.cart button').forEach(function(button) {
+        //         button.addEventListener('click', function() {
+        //             const parent = this.parentNode;
+        //             const input = parent.querySelector('input');
+        //             let value = parseFloat(input.value) || 1;
+        //             if (this.classList.contains('increment')) {
+        //                 value++;
+        //             } else {
+        //                 value = Math.max(1, value - 1);
+        //             }
+        //             input.value = value;
+        //             updateTotal();
+        //         });
+        //     });
+
+        function addToCart(item, price) {
+            if (!addedItems.includes(cartt)) {
+                addedItems.push(item);
+                cart[item] = {
+                    quantity: 1,
+                    price: price
+                };
+                currentItem = item;
+                updateSelect();
+                updateCart();
+            }
+        }
+        function updateSelect() {
+            let selectItems = document.querySelectorAll('.item div');
+            for (let item of selectItems) {
+                let itemName = item.getAttribute('data-item');
+                if (addedItems.includes(itemName)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+        }
+        function changeQuantity(item, amount) {
+            if (cart[item]) {
+                cart[item].quantity += amount;
+                if (cart[item].quantity < 0) {
+                    cart[item].quantity = 0;
+                }
+                if (cart[item].quantity === 0) {
+                    removeItem(item);
+                } else {
+                    updateCart();
+                }
+            }
+            currentItem = item;
+            updateSelect();
+        }
+        function removeItem(item) {
+            const itemIndex = addedItems.indexOf(item);
+            if (itemIndex !== -1) {
+                addedItems.splice(itemIndex, 1);
+            }
+            delete cart[item];
+            updateCart();
+            updateSelect();
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            for (let item in cart) {
+                total += cart[item].price * cart[item].quantity;
+            }
+            return total;
+        }
+        function updateCart() {
+            for (let item in cart) {
+                document.getElementById(`${item}-quantity`).value = cart[item].quantity;
+            }
+            document.getElementById('total').textContent = calculateTotal();
+        }
+
+
+        function saveList() {
+            sessionStorage.setItem('total', document.getElementById('total').textContent);
+            alert('Cart saved successfully!');
+        }
+        function addToCart(item, price) {
+            if (!addedItems.includes(item)) {
+                addedItems.push(item);
+                cart[item] = {
+                    quantity: 1,
+                    price: price
+                };
+                currentItem = item;
+                updateSelect();
+                updateCart();
+            }
+        }
+        function updateSelect() {
+            let selectItems = document.querySelectorAll('.item div');
+            for (let item of selectItems) {
+                let itemName = item.getAttribute('data-item');
+                if (addedItems.includes(itemName)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+        }
+
+        function changeQuantity(item, amount) {
+            if (cart[item]) {
+                cart[item].quantity += amount;
+                if (cart[item].quantity < 0) {
+                    cart[item].quantity = 0;
+                }
+                if (cart[item].quantity === 0) {
+                    removeItem(item);
+                } else {
+                    updateCart();
+                }
+            }
+            currentItem = item;
+            updateSelect();
+        }
+
+        function removeItem(item) {
+            const itemIndex = addedItems.indexOf(item);
+            if (itemIndex !== -1) {
+                addedItems.splice(itemIndex, 1);
+            }
+            delete cart[item];
+            updateCart();
+            updateSelect();
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            for (let item in cart) {
+                total += cart[item].price * cart[item].quantity;
+            }
+            return total;
+        }
+
+        function updateCart() {
+            for (let item in cart) {
+                document.getElementById(`${item}-quantity`).value = cart[item].quantity;
+            }
+            document.getElementById('total').textContent = calculateTotal();
+        }
+
+
+
+        window.onload = function () {
+            let savedTotal = sessionStorage.getItem('total');
+            if (savedTotal) {
+                document.getElementById('total').textContent = savedTotal;
+            }
+        };  
+    </script>
+
+
+
+</body>
+
+</html>
