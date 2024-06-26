@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="name" />
+        <button onclick="choose()">Search</button>
+    </div>
+    <img id="image" style="width: 15rem; height: 15rem" />
+</body>
+<script>
+     function choose() { 
+        const text= document.getElementById("name").value;
+        const apikey= "AIzaSyA39UQG9KZjyfUEsyPHW_RjL7LeDiU_VY8";
+        const urll=  `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${name}&key=${apikey}`;
+        
+        fetch(urll)
+        .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            
+
+        })
+     }
+</script>
+</html>

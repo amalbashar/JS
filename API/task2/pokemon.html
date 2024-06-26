@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="name" placeholder="Enter Pokemon name" />
+        <button onclick="choose()">Search</button>
+    </div>
+    <img id="image" style="width: 15rem; height: 15rem" />
+
+
+</body>
+<script>
+    function choose() {
+        const pokemon = document.getElementById("name").value.toLowerCase();
+        const urll = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+
+        fetch(urll)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+              
+                document.getElementById("image").src = data.sprites.front_shiny;                ;
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    }
+</script>
+
+</html>
